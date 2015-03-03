@@ -18,3 +18,8 @@ gulp.task('delete', function() {
 gulp.task('post', function() {
   return gulp.src('').pipe(shell("curl -X POST -v -d 'ignored data' localhost:3000"));
 });
+
+var del = require('del');
+gulp.task('clean', function(cb) {
+  del(['node_modules/*'], cb);
+});
