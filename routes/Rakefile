@@ -1,0 +1,26 @@
+task :default => :server
+
+desc "run server"
+task :server do
+  sh "node app.js"
+end
+
+desc "make a get / request via curl"
+task :get do
+  sh "curl -v localhost:3000"
+end
+
+desc "make a post / request via curl"
+task :postroot do
+  sh "curl -X POST -v -d 'ignored data' localhost:3000"
+end
+
+desc "make a put / request via curl"
+task :put do
+  sh "curl -X PUT -v localhost:3000/user"
+end
+
+desc "make a DELETE / request via curl"
+task :delete do
+  sh "curl -X DELETE -v localhost:3000/user"
+end
