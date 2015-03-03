@@ -1,8 +1,6 @@
 var gulp    = require('gulp');
 var shell = require('gulp-shell');
 
-//    gutil   = require('gulp-util');
-
 gulp.task('default', ['server']);
 
 gulp.task('server', function () {
