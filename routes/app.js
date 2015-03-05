@@ -12,6 +12,17 @@ app.use(express.static('public'));
 var birds = require('./birds');
 app.use('/birds', birds);
 
+// a middleware mounted on /usuario/:id; will be executed for any type of HTTP request to /usuario/:id
+app.use('/usuario/:id', function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+
+// a route and its handler function (middleware system) which handles GET requests to /usuario/:id
+app.get('/usuario/:id?', function (req, res, next) {
+  res.send('USUARIO: '+(req.params.id || 'unknown' ));
+});
+
 // route with two callbacks
 app.get('/example/b', function (req, res, next) {
   console.log('response will be sent by the next function ...')
@@ -60,7 +71,7 @@ app.delete('/user', function (req, res) {
 
 app.all('/secret', function (req, res, next) {
   console.log('Accessing the secret section ... with method '+req.method)
-  res.send('Got a '+req.method+' request at /user');
+  res.send('Got a '+req.method+' request at /secret');
 });
 
 var server = app.listen(3000, function () {
