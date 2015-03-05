@@ -20,6 +20,7 @@ app.use('/usuario/:id', function (req, res, next) {
 
 // a route and its handler function (middleware system) which handles GET requests to /usuario/:id
 app.get('/usuario/:id?', function (req, res, next) {
+  console.log(req.params);
   res.send('USUARIO: '+(req.params.id || 'unknown' ));
 });
 
