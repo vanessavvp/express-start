@@ -24,6 +24,19 @@ app.get('/usuario/:id?', function (req, res, next) {
   res.send('USUARIO: '+(req.params.id || 'unknown' ));
 });
 
+// a middleware sub-stack which handles GET requests to /chuchu/:id
+app.get('/chuchu/:id', function (req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+}, function (req, res, next) {
+  res.send('User Info');
+});
+
+// handler for /chuchu/:id which prints the chuchu id
+app.get('/chuchu/:id', function (req, res, next) {
+  res.end(req.params.id);
+});
+
 // route with two callbacks
 app.get('/example/b', function (req, res, next) {
   console.log('response will be sent by the next function ...')
