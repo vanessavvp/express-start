@@ -8,11 +8,38 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+// How to use a separated router: express.Router
+var birds = require('./birds');
+app.use('/birds', birds);
+
+// route with two callbacks
+app.get('/example/b', function (req, res, next) {
+  console.log('response will be sent by the next function ...')
+  next();
+}, function (req, res) {
+  res.send('Hello from B!')
+});
+
 // respond with "Hello World!" on the homepage
 app.get('/', function (req, res) {
   res.send('Got a GET request'+
     '<br/><img src="images/kitten.jpg" />'
   );
+})
+
+//json
+app.get('/json', function(req, res) {
+  res.json({ user: 'tobi'});
+});
+
+// another way to respond with json
+app.get('/json2', function(req, res) {
+  res.send({ some: 'json' });
+});
+
+//download a file
+app.get('/download', function (req, res) {
+  res.download("public/images/kitten.jpg");
 })
 
 // accept POST request on the homepage
@@ -30,6 +57,11 @@ app.put('/user', function (req, res) {
 app.delete('/user', function (req, res) {
   res.send('Got a DELETE request at /user');
 })
+
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ... with method '+req.method)
+  res.send('Got a '+req.method+' request at /user');
+});
 
 var server = app.listen(3000, function () {
 

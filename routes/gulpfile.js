@@ -3,8 +3,9 @@ var shell = require('gulp-shell');
 
 gulp.task('default', ['server']);
 
+// npm install supervisor -g
 gulp.task('server', function () {
-  return gulp.src('').pipe(shell([ 'node app.js' ]));
+  return gulp.src('').pipe(shell([ 'node-supervisor app.js' ]));
 });
 
 gulp.task('put', function() {
@@ -17,6 +18,18 @@ gulp.task('delete', function() {
 
 gulp.task('post', function() {
   return gulp.src('').pipe(shell("curl -X POST -v -d 'ignored data' localhost:3000"));
+});
+
+gulp.task('put', function() {
+  return gulp.src('').pipe(shell(["curl -X PUT -v localhost:3000/user"]));
+});
+
+gulp.task('secretdelete', function() {
+  return gulp.src('').pipe(shell("curl -X DELETE -v localhost:3000/secret"));
+});
+
+gulp.task('secretpost', function() {
+  return gulp.src('').pipe(shell("curl -X POST -v -d 'ignored data' localhost:3000/secret"));
 });
 
 var del = require('del');
