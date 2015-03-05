@@ -37,6 +37,22 @@ app.get('/chuchu/:id', function (req, res, next) {
   res.end(req.params.id);
 });
 
+// a middleware sub-stack which handles GET requests to /tata/:id
+app.get('/tata/:id', function (req, res, next) {
+  // if tata id is 0, skip to the next route
+  if (req.params.id == 0) next('route');
+  // else pass the control to the next middleware in this stack
+  else next(); // 
+}, function (req, res, next) {
+  // render a regular page
+  res.send('regular');
+});
+
+// handler for /tata/:id which renders a special page
+app.get('/tata/:id', function (req, res, next) {
+  res.send('special');
+});
+
 // route with two callbacks
 app.get('/example/b', function (req, res, next) {
   console.log('response will be sent by the next function ...')
