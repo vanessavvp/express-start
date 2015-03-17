@@ -32,6 +32,10 @@ gulp.task('secretpost', function() {
   return gulp.src('').pipe(shell("curl -X POST -v -d 'ignored data' localhost:3000/secret"));
 });
 
+gulp.task('cookie', function() {
+  return gulp.src('').pipe(shell("curl --cookie chuchu=4 localhost:3000/usuario/casiano"));
+});
+
 var del = require('del');
 gulp.task('clean', function(cb) {
   del(['node_modules/*'], cb);
