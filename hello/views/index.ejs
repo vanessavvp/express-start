@@ -1,16 +1,9 @@
-<!doctype html>
-<html>
-  <head>
-    <title><%- title %></title>
-  </head>
-  <body>
     <div>
-      <div>
-        <h1><%- title  %></h1>
-        <p>Welcome to <%- title %></p>
-        <p>go to <a href="/chuchu">chuchu</a></p>
-        <p>go <a href="/">home</a></p>
-      </div>
+      <h1><%- title  %></h1>
+        <form action="/" method="post">
+           Enter your name:
+           <input type="text" name="userName" placeholder="..." autofocus />
+           <br/>
+           <button type="submit">Submit</button>
+        </form>
     </div>
-  </body>
-</html>
