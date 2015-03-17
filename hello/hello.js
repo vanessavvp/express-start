@@ -1,10 +1,13 @@
 var express = require('express')
 var app = express()
 var path = require('path');
+var expressLayouts = require('express-ejs-layouts');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(expressLayouts);
 
 // Serve static files
 app.use(express.static('.'));
@@ -41,7 +44,7 @@ app.get('/', function(req, res){
 // that `req.body` will be filled in with the form elements
 app.post('/', function(req, res){
   var userName = req.body.userName;
-  res.render('greet', {userName: userName});
+  res.render('greet', {userName: userName, title: 'cheers'});
 });
 
 app.listen(app.get('port'), function() {
