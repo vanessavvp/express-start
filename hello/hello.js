@@ -29,7 +29,7 @@ app.get('/cat', function (req, res) {
 })
 
 app.get('/dog', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public/kitten.jpg'));
+  res.sendFile(path.join(__dirname, 'public/dog.jpg'));
 });
 
 var server = app.listen(8080, function () {
