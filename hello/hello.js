@@ -6,6 +6,8 @@ var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
 app.get('/', function (req, res) {
   //res.send('Hello World!')
   res.render('index', { title: 'Express' });
@@ -20,7 +22,17 @@ app.get('/chuchu', function (req, res) {
   res.render('index', { title: 'Chuchu' });
 })
 
-var server = app.listen(3000, function () {
+app.get('/cat', function (req, res) {
+  res.send('Got a GET request'+
+    '<br/><img src="kitten.jpg" />'
+  );
+})
+
+app.get('/dog', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/kitten.jpg'));
+});
+
+var server = app.listen(8080, function () {
 
   var host = server.address().address
   var port = server.address().port
