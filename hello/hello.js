@@ -9,15 +9,15 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-  //res.send('Hello World!')
-  res.render('index', { title: 'Express' });
+  res.send('Hello World!')
+ // res.render('index', { title: 'Express' });
 })
 
 /*
  var router = express.Router();
   module.exports = router; 
 */
-app.get('/chuchu', function (req, res) {
+app.get('/chuchu.html', function (req, res) {
   //res.send('Hello Chuchu!')
   res.render('index', { title: 'Chuchu' });
 })

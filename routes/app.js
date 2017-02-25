@@ -33,12 +33,14 @@ app.get('/usuario/:id?', function (req, res, next) {
 });
 
 // a middleware sub-stack which handles GET requests to /chuchu/:id
+/*
 app.get('/chuchu/:id', function (req, res, next) {
   console.log('ID:', req.params.id);
   next();
 }, function (req, res, next) {
   res.send('User Info');
 });
+*/
 
 // handler for /chuchu/:id which prints the chuchu id
 app.get('/chuchu/:id', function (req, res, next) {
@@ -61,8 +63,13 @@ app.get('/tata/:idx', function (req, res, next) {
   res.send('special');
 });
 
-app.param('idx', function (req, res, next, idx) {
-  console.log('CALLED ONLY ONCE '+req.params.idx);
+app.get('/raro/:idx', function(req,res) {
+  res.send('req.params.idx = '+req.params.idx);
+});
+
+app.param('raro', function (req, res, next, idx) {
+  //console.log('CALLED ONLY ONCE '+req.params.idx);
+  console.log('CALLED ONLY ONCE '+idx);
   next();
 });
 
