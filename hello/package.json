@@ -6,7 +6,7 @@
   "dependencies": {
     "ejs": "*",
     "express": "*",
-    "ip": "^1.1.5"
+    "ip": "*"
   },
   "devDependencies": {},
   "scripts": {
