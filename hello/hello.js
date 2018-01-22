@@ -1,3 +1,4 @@
+var ip = require("ip");
 var express = require('express')
 var app = express()
 var path = require('path');
@@ -32,7 +33,7 @@ app.get('/dog', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/dog.jpg'));
 });
 
-var server = app.listen(8080, function () {
+var server = app.listen(8080, ip.address(), function () {
 
   var host = server.address().address
   var port = server.address().port
