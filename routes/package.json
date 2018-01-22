@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "cookie-parser": "*",
     "ejs": "*",
     "express": "*",
-    "cookie-parser": "*"
+    "ip": "^1.1.5"
   },
   "devDependencies": {
     "gulp": "*",

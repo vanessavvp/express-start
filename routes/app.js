@@ -1,3 +1,4 @@
+var ip = require("ip");
 var express = require('express')
 var app = express()
 var path = require('path');
@@ -15,7 +16,7 @@ var birds = require('./birds');
 app.use('/birds', birds);
 
 // a middleware mounted on /usuario/:id; will be executed for any type of HTTP request to /usuario/:id
-// visit: http://localhost:3000/usuario/casiano
+// visit: http://localhost:8080/usuario/casiano
 app.use('/usuario/:id', function (req, res, next) {
   console.log('Request Type:', req.method);   // GET
   console.log('Request Path:', req.path);     // /
@@ -118,7 +119,7 @@ app.all('/secret', function (req, res, next) {
   res.send('Got a '+req.method+' request at /secret');
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(8080, ip.address(), function () {
 
   var host = server.address().address
   var port = server.address().port
