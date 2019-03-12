@@ -3,11 +3,17 @@ var express = require('express')
 var app = express()
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 app.use(cookieParser());
 
@@ -62,6 +68,7 @@ app.get('/tata/:idx', function (req, res, next) {
   res.send('special');
 });
 
+// http://expressjs.com/es/api.html#app.param
 app.param('idx', function (req, res, next, idx) {
   console.log('CALLED ONLY ONCE '+req.params.idx);
   next();
@@ -119,7 +126,7 @@ app.all('/secret', function (req, res, next) {
   res.send('Got a '+req.method+' request at /secret');
 });
 
-var server = app.listen(8080, ip.address(), function () {
+var server = app.listen(8080, '0.0.0.0' /* ip.address() */, function () {
 
   var host = server.address().address
   var port = server.address().port

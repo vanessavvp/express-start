@@ -1,23 +1,24 @@
 {
-  "name": "routes",
-  "version": "0.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "cookie-parser": "*",
-    "ejs": "*",
-    "express": "*",
-    "ip": "^1.1.5"
-  },
-  "devDependencies": {
-    "gulp": "*",
-    "gulp-shell": "*",
-    "gulp-util": "*",
-    "del": "*"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "routes",
+    "version": "0.0.0",
+    "description": "",
+    "main": "app.js",
+    "dependencies": {
+        "cookie-parser": "*",
+        "ejs": "*",
+        "express": "*",
+        "gulp": "^3.9.1",
+        "ip": "^1.1.5"
+    },
+    "devDependencies": {
+        "del": "*",
+        "gulp-shell": "*",
+        "gulp-util": "*"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "test": "nodemon app.js"
+    },
+    "author": "",
+    "license": "ISC"
 }
